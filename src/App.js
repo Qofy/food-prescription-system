@@ -1,75 +1,27 @@
-import { useState } from "react";
-import ImageUpload from "../src/component/ImageUpload";
-import ConditionInput from "../src/component/ConditionInput";
-import RecommendationDisplay from "../src/component/RecommendationDisplay";
-import "./App.css";
+import React, { useState } from 'react';
+import { Utensils } from 'lucide-react';
+import Navigation from './components/Navigation';
+import Home from './components/Home';
+import Profile from './components/Profile';
+import History from './components/History';
+import Footer from './components/Footer';// Assuming you have a global CSS file
 
-function App() {
-  const [uploadedImage, setUploadedImage] = useState(null);
-  const [medicalCondition, setMedicalCondition] = useState("");
-  const [recommendations, setRecommendations] = useState(null);
-  const [loading, setLoading] = useState(false);
+const App = () => {
+  const [activeTab, setActiveTab] = useState('home');
 
-  const handleAnalyze = async () => {
-    if (!uploadedImage || !medicalCondition){
-      alert("Please upload an image and enter a medical condition.");
-      return;
-    }
-
-    setLoading(true);
-
-    const formData = new FormData();
-    formData.append("image", uploadedImage);
-    formData.append("condition", medicalCondition);
-
-    try{
-      const response = await fetch('/api/analyze', {
-        method: 'POST',
-        body: formData,
-      });
-
-      const result = await response.json();
-      setRecommendations(result);
-    }catch (error) {
-      console.log("Error:", error);
-      alert("Analysis failed. Please try again.");
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  return(
-    <div className="App">
-      <header className="App-header">
-        <h1>AI-Based Food Prescription System</h1>
-        <p>Upload food images and get personalized dietary recommendations</p>
-      </header>
-      <main className="main-content">
-        <div className="input-section">
-          <ImageUpload 
-          onImageUpload={setUploadedImage} 
-          uploadedImage={uploadedImage}
-          />
-
-          <ConditionInput
-          conditions={medicalCondition}
-          onConditionChange={setMedicalCondition}
-          />
-
-          <button
-          onClick={handleAnalyze}
-          disabled={loading || !uploadedImage || !medicalCondition}
-          className="analyze-button"
-          >
-            {loading ? "Analyzing..." : "Get Recommendations"}
-          </button>
-        </div>
-        {recommendations && (
-          <RecommendationDisplay recommendations={recommendations} />
-        )}
+  return (
+    <div className="min-h-screen bg-gray-50">
+      <Navigation activeTab={activeTab} setActiveTab={setActiveTab} />
+      
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        {activeTab === 'home' && <Home />}
+        {activeTab === 'profile' && <Profile />}
+        {activeTab === 'history' && <History />}
       </main>
+      
+      <Footer />
     </div>
   );
-}
+};
 
 export default App;

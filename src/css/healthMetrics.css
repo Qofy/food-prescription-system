@@ -1,0 +1,44 @@
+.health-metrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.metric-card {
+  padding: 16px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.metric-card.blue {
+  background-color: #eff6ff;
+  color: #1d4ed8;
+}
+
+.metric-card.green {
+  background-color: #f0fdf4;
+  color: #16a34a;
+}
+
+.metric-card.purple {
+  background-color: #faf5ff;
+  color: #7c3aed;
+}
+
+.metric-card.orange {
+  background-color: #fff7ed;
+  color: #ea580c;
+}
+
+.metric-value {
+  font-size: 1.5rem;
+  font-weight: bold;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.metric-label {
+  font-size: 0.875rem;
+  opacity: 0.8;
+}

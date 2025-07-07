@@ -1,0 +1,59 @@
+.recommendations {
+  margin-top: 24px;
+}
+
+.recommendations-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 16px;
+}
+
+.recommendation-card {
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid;
+  margin-bottom: 12px;
+}
+
+.recommendation-card.recommended {
+  background-color: #f0fdf4;
+  border-color: #bbf7d0;
+  color: #166534;
+}
+
+.recommendation-card.caution {
+  background-color: #fffbeb;
+  border-color: #fde68a;
+  color: #92400e;
+}
+
+.recommendation-card.avoid {
+  background-color: #fef2f2;
+  border-color: #fecaca;
+  color: #dc2626;
+}
+
+.recommendation-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.recommendation-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.recommendation-condition {
+  font-weight: 500;
+}
+
+.recommendation-reason {
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
